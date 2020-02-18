@@ -3,7 +3,7 @@
  * Game.js */
 
  class Game {
-    constructor(missed, phrases, activePhrases) { 
+    constructor(missed, phrases, activePhrase) { 
 
     this.missed = 0;
     this.phrases = this.createPhrases();
@@ -47,6 +47,7 @@ return this.phrases[randomPhrase];
         startGame(){
             document.getElementById('overlay').style.display = 'none';
                 this.activePhrase = this.getRandomPhrase();
+                
                 this.activePhrase.addPhraseToDisplay();
                 
         }
