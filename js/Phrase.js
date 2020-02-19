@@ -22,7 +22,7 @@
            if (li.textContent === ' ') {
              li.className = "space";
            }
-
+           
          }
 
        }

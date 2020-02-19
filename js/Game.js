@@ -14,24 +14,18 @@
      createPhrases(){
 
 const phraseList = [
-    {phrase: "Who the hell do you think I am"
-        },
-    {phrase: "Do the Impossible"
-            },
-    {phrase: "See the Invisible"
-               },
-    {phrase: "Row Row"
-                    },
-    {phrase: "Fight the Power"
-                         },
-    {phrase: "Believe in the you who believes in yourself"
-        }
+    
+    new Phrase("Do the Impossible"),
+    new Phrase("See the Invisible"),
+    new Phrase("Row Row"),
+    new Phrase("Fight the Power"),
+    new Phrase("Believe in the you who believes in yourself"),
+    new Phrase("Who the hell do you think I am")
     ];
 
 return phraseList;
 
      }
-//Math.floor(Math.random() * (phrase.length))
 
 /**
  * Selects random phrase from phrases property
@@ -47,7 +41,6 @@ return this.phrases[randomPhrase];
         startGame(){
             document.getElementById('overlay').style.display = 'none';
                 this.activePhrase = this.getRandomPhrase();
-                
                 this.activePhrase.addPhraseToDisplay();
                 
         }
