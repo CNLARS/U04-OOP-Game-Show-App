@@ -3,7 +3,7 @@
  * Game.js */
 
  class Game {
-    constructor(missed, phrases, activePhrase) { 
+    constructor(missed, phrases, activePhrase){ 
 
     this.missed = 0;
     this.phrases = this.createPhrases();
@@ -23,9 +23,9 @@ const phraseList = [
     new Phrase("Who the hell do you think I am")
     ];
 
-return phraseList;
+    return phraseList;
 
-     }
+    }
 
 /**
  * Selects random phrase from phrases property
@@ -33,17 +33,20 @@ return phraseList;
  */
 
     getRandomPhrase(){
-const randomPhrase = Math.floor(Math.random() * (this.createPhrases().length))
+        const randomPhrase = Math.floor(Math.random() * (this.createPhrases().length))
+    return this.phrases[randomPhrase];
+    }
 
-return this.phrases[randomPhrase];
-        }
+    startGame(){
+        document.getElementById('overlay').style.display = 'none';
+            this.activePhrase = this.getRandomPhrase();
+                this.activePhrase.addPhraseToDisplay();      
+    }
 
-        startGame(){
-            document.getElementById('overlay').style.display = 'none';
-                this.activePhrase = this.getRandomPhrase();
-                this.activePhrase.addPhraseToDisplay();
-                
-        }
+    handleInteraction(){
 
+
+        
+    }
 
  }
