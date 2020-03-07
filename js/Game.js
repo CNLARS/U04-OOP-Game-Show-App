@@ -49,4 +49,30 @@ const phraseList = [
         
     }
 
+
+    /*
+        * @return {boolean} True if game has been won.
+    */
+
+    checkForWin(){
+        const letterMatchSet = [document.querySelectorAll('li.hide')];
+        const letterMatchArray = [];
+            letterMatchSet.forEach(letter => letterMatchArray.push(letter) );
+        showMatchedLetter(letter);
+        if( (letterMatch[i].style.display !== 'none') && letterMatch[i].style.display === letterMatchArray){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    /**
+* Increases the value of the missed property
+* Subtracts a life from player.
+* Checks if there are remaining lives and ends game if there are none.
+*/
+
+  //IN PROGRESS!
+removeLife() {};
+
  }

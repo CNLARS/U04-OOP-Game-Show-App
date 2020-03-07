@@ -14,7 +14,7 @@
          for (let i = 0; i < this.phrase.length; i++){
 
            const li = document.createElement('li');
-           li.className = "hide letter " + this.phrase[i];
+           li.className = `hide letter ${this.phrase[i]}`;
            li.textContent = this.phrase[i];
            phraseUL.appendChild(li);
 
@@ -25,36 +25,31 @@
        }
 
        /**
-        * Checks to see if the letter selected by the player matches.
-        * Checks if passed letter is in phrase
-        * @param (string) letter - Letter to check
+        When selected, check if the letter exists in phrase.
+        **/
+      checkLetter(letter) {this.phrase.forEach(letter => {if(this.phrase.includes(letter)){
+              return true;
+              console.log(true);
+          } else { 
+              return false;
+              console.log(false);
+          }
+       });
+      }
+
+       /**
+        When true function displays matching letter on screen.
         */
-        checkLetter(letter) {
+      showMatchedLetter(letter) {
+        const letterMatch = document.querySelectorAll('li.hide');
+        for(let i = 0; i < letterMatch.length; i++){
+          
+          if(letter === letterMatch[i]){
+          letterMatch[i].style.display = 'block';
+        } else {
+          letterMatch[i].style.display = 'none';
+        }
+      }
+    }
 
-document.getElementsByClassName("key").addEventListener("click", () => {
-   //if (document.getElementsByClassName("key").innerHTML == document.getElementById("phrase").innerHTML) {
-
-     console.log("testing123");
-  // }
-
-});
-
-         
-        };
-        
-
-        /**
-         * 
-         * Reveals the letter(s) on the board that matches the
-         player 's selection. To reveal the matching letter(s), select all of the letter DOM
-         elements that have a CSS class name that matches the selected letter and
-         replace each selected element 's `hide` CSS class with the `show` CSS class.
-         * 
-         * Displays passed letter on screen after a match is found
-         * @param (string) letter - Letter to display
-         */
-        showMatchedLetter(letter) {};
-
-
-
-  }
+} // <= Phrase class bracket
