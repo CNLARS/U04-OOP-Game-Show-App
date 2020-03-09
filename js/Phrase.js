@@ -26,19 +26,25 @@
 
        /**
         When selected, check if the letter exists in phrase.
+          Testing123: game.activePhrase.checkLetter('a')
         **/
-      checkLetter(letter) {this.phrase.forEach(letter => {if(this.phrase.includes(letter)){
-              return true;
-              console.log(true);
+      checkLetter(letter) { 
+        
+        for (let i = 0; i < this.phrase.length; i++){
+          if(this.phrase.includes(letter)){
+            return true;
+              //console.log(true);
           } else { 
               return false;
-              console.log(false);
+              //console.log(false);
           }
-       });
+        }
       }
 
        /**
-        When true function displays matching letter on screen.
+        If true, function displays matching letter on screen.
+          Testing123 
+            game.activePhrase.showMatchedLetter('a')
         */
       showMatchedLetter(letter) {
         const letterMatch = document.querySelectorAll('li.hide');
@@ -53,3 +59,7 @@
     }
 
 } // <= Phrase class bracket
+
+/* For Later:
+const qwertyButton = document.querySelectorAll('button.key');
+*/

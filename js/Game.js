@@ -14,7 +14,7 @@
      createPhrases(){
 
 const phraseList = [
-    
+//Uplifting Phrases from the Anime Gurren Lagann; created by calling the Phrase class using `new Phrase()`
     new Phrase("Do the Impossible"),
     new Phrase("See the Invisible"),
     new Phrase("Row Row"),
