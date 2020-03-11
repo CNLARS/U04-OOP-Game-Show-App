@@ -48,15 +48,22 @@
         */
       showMatchedLetter(letter) {
         const letterMatch = document.querySelectorAll('li.hide');
+        const hiddenLetter = document.getElementsByClassName('hide');
+
         for(let i = 0; i < letterMatch.length; i++){
           
-          if(letter === letterMatch[i]){
-          letterMatch[i].style.display = 'block';
+          if(this.phrase.match(letter)){
+            hiddenLetter[i].style.display = "block";
+            console.log("working");
         } else {
-          letterMatch[i].style.display = 'none';
-        }
+            hiddenLetter[i].style.display = "none";
+            console.log("try again");
       }
     }
+    //   if(letter === letterMatch[i]){
+    //     letterMatch[i].style.display = 'block';
+    // }
+  }
 
 } // <= Phrase class bracket
 
