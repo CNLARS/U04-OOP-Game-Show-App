@@ -51,7 +51,8 @@ const phraseList = [
 
 
     /*
-        * @return {boolean} True if game has been won.
+        * @return {boolean} True if player matches all letters + game has been won.
+            Testing123: game.checkForWin()
     */
 
     checkForWin(){

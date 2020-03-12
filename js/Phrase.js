@@ -14,7 +14,7 @@
          for (let i = 0; i < this.phrase.length; i++){
 
            const li = document.createElement('li');
-           li.className = `hide letter ${this.phrase[i]}`;
+           li.className = `hide letter ${this.phrase[i].toLowerCase()}`; //Advised to add `.toLowerCase()`
            li.textContent = this.phrase[i];
            phraseUL.appendChild(li);
 
@@ -43,26 +43,23 @@
 
        /**
         If true, function displays matching letter on screen.
-          Testing123 
-            game.activePhrase.showMatchedLetter('a')
+          Testing123: game.activePhrase.showMatchedLetter('a')
         */
-      showMatchedLetter(letter) {
-        const letterMatch = document.querySelectorAll('li.hide');
-        const hiddenLetter = document.getElementsByClassName('hide');
 
-        for(let i = 0; i < letterMatch.length; i++){
+      showMatchedLetter(letter) {
+        //phraseLetters as advised by @Emma W
+        const phraseLetters = document.getElementsByClassName(letter);
+
+        for(let i = 0; i < phraseLetters.length; i++){
           
-          if(this.phrase.match(letter)){
-            hiddenLetter[i].style.display = "block";
-            console.log("working");
+          if(letter === phraseLetters){
+            phraseLetters[i].classList.remove("hide");
+            //console.log("working");
         } else {
-            hiddenLetter[i].style.display = "none";
-            console.log("try again");
+            phraseLetters[i].classList.add("show");
+            //console.log("try again");
       }
     }
-    //   if(letter === letterMatch[i]){
-    //     letterMatch[i].style.display = 'block';
-    // }
   }
 
 } // <= Phrase class bracket
