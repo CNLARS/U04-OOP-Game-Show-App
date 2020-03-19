@@ -56,7 +56,7 @@
             phraseLetters[i].classList.remove("hide");
             //console.log("working");
         } else {
-            phraseLetters[i].classList.add("show");
+            phraseLetters[i].classList.replace("hide", "show");
             //console.log("try again");
       }
     }
@@ -66,4 +66,5 @@
 
 /* For Later:
 const qwertyButton = document.querySelectorAll('button.key');
+OR document.getElementsByClassName('key');
 */

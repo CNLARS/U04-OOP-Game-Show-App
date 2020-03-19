@@ -51,29 +51,94 @@ const phraseList = [
 
 
     /*
-        * @return {boolean} True if player matches all letters + game has been won.
+        * @return {boolean} True if player matches all letters for the win.
             Testing123: game.checkForWin()
     */
 
     checkForWin(){
-        const letterMatchSet = [document.querySelectorAll('li.hide')];
-        const letterMatchArray = [];
-            letterMatchSet.forEach(letter => letterMatchArray.push(letter) );
-        showMatchedLetter(letter);
-        if( (letterMatch[i].style.display !== 'none') && letterMatch[i].style.display === letterMatchArray){
-            return true;
-        }else{
+
+        const letterMatchSet = document.getElementsByClassName("show").length;
+        const letterMatchPhrase = document.getElementsByClassName("letter").length;
+    
+        if(letterMatchSet === letterMatchPhrase){
+         return true;
+        } else {
             return false;
         }
+
     }
 
     /**
-* Increases the value of the missed property
-* Subtracts a life from player.
-* Checks if there are remaining lives and ends game if there are none.
+* Increases this.missed 
+* Decreases a life.
+* Checks: if lives > 0, else if 0 = game over.
+
+    Testing123: game.removeLife();
+
 */
 
   //IN PROGRESS!
-removeLife() {};
 
- }
+removeLife() {
+        const key = document.getElementsByClassName("key");
+        const phraseLetters = document.getElementsByClassName("letter");
+        const tries = document.getElementsByClassName("tries");
+        
+        for(let i = 0; i < tries.length; i++){
+            key[i].addEventListener('click, keyup', (e) => {
+    
+            if(e.target.textContent !== phraseLetters.textContent){
+                
+                tries[i].children.setAttribute("src", "images/lostHeart.png");
+                tries[i].children.setAttribute("alt", "Lost Heart");
+                
+                this.missed++;
+                
+                if(this.missed === 5){
+                    gameOver();
+                }
+            }
+
+            });
+        }
+    }
+}
+
+    /**
+* Displays game over message
+* @param {boolean} gameWon - Win = true or Lose = false
+
+INSTRUCTIONS:
+
+`gameOver()`: This method displays the original start screen overlay, and
+depending on the outcome of the game, updates the overlay `h1` element with a
+friendly win or loss message, and replaces the overlay’s `start` CSS class with
+either the `win` or `lose` CSS class.
+
+*/
+// gameOver(gameWon){
+//     if(this.missed === 5){
+//         gameWon = true;
+//         //Loss Message / overlay update + replace start CSS class with lose CSS
+//     } else {
+//         gameWon = false;
+//     }
+
+//     if( checkForWin() ){
+//         gameWon = true;
+//         //Win Message / overlay update + replace start CSS class with win CSS
+//     } else {
+//         gameWon = false;
+//     }
+
+// };
+
+    
+   
+
+
+
+
+
+
+//}
