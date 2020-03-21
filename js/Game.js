@@ -87,10 +87,10 @@ removeLife() {
         for(let i = 0; i < tries.length; i++){
             key[i].addEventListener('click, keyup', (e) => {
     
-            if(e.target.textContent !== phraseLetters.textContent){
+            if(!e.target.textContent === phraseLetters.textContent){
                 
-                tries[i].children.setAttribute("src", "images/lostHeart.png");
-                tries[i].children.setAttribute("alt", "Lost Heart");
+                tries[i].firstChild.src = "images/lostHeart.png";
+                tries[i].firstChild.alt = "Lost Heart";
                 
                 this.missed++;
                 
@@ -102,43 +102,33 @@ removeLife() {
             });
         }
     }
-}
+
 
     /**
 * Displays game over message
-* @param {boolean} gameWon - Win = true or Lose = false
-
-INSTRUCTIONS:
-
-`gameOver()`: This method displays the original start screen overlay, and
-depending on the outcome of the game, updates the overlay `h1` element with a
-friendly win or loss message, and replaces the overlay’s `start` CSS class with
-either the `win` or `lose` CSS class.
-
+* @param {boolean} gameWon - Win or Lose = true or Lose = false
 */
-// gameOver(gameWon){
-//     if(this.missed === 5){
-//         gameWon = true;
-//         //Loss Message / overlay update + replace start CSS class with lose CSS
-//     } else {
-//         gameWon = false;
-//     }
-
-//     if( checkForWin() ){
-//         gameWon = true;
-//         //Win Message / overlay update + replace start CSS class with win CSS
-//     } else {
-//         gameWon = false;
-//     }
-
-// };
-
+gameOver(gameWon){
+    const overlay = document.getElementById("overlay");
+    const gameOverMSG = document.getElementById("game-over-message");
     
-   
+    if(this.missed === 5){
+        gameWon = true;
+        overlay.style.display = 'initial';
+        overlay.classList.replace("start", "lose");
+        gameOverMSG.textContent = "GAME OVER: Better Luck Next Time!"
+        //Includes: Loss Message / overlay update + changes class from start to lose
+    } else if( this.checkForWin() ){
+            gameWon = true;
+            overlay.style.display = 'initial';
+            overlay.classList.replace("start", "win");
+            gameOverMSG.textContent = "WINNER!!!";
+            //Includes: Win Message / overlay update + changes class from start to win
+        } else {
+            gameWon = false;
+            //console.log("Keep Going");
+        }
 
+};
 
-
-
-
-
-//}
+} //constructor closing bracket
