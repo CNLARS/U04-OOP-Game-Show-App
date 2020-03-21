@@ -80,26 +80,26 @@ const phraseList = [
   //IN PROGRESS!
 
 removeLife() {
-        const key = document.getElementsByClassName("key");
+        //const key = document.getElementsByClassName("key");
         const phraseLetters = document.getElementsByClassName("letter");
         const tries = document.getElementsByClassName("tries");
         
         for(let i = 0; i < tries.length; i++){
-            key[i].addEventListener('click, keyup', (e) => {
+           
     
-            if(!e.target.textContent === phraseLetters.textContent){
+            if(!phraseLetters.textContent){
                 
                 tries[i].firstChild.src = "images/lostHeart.png";
                 tries[i].firstChild.alt = "Lost Heart";
                 
-                this.missed++;
+                this.missed +1;
                 
                 if(this.missed === 5){
                     gameOver();
                 }
             }
 
-            });
+           
         }
     }
 
