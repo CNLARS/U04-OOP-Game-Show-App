@@ -43,12 +43,6 @@ const phraseList = [
                 this.activePhrase.addPhraseToDisplay();      
     }
 
-    handleInteraction(){
-
-
-        
-    }
-
 
     /*
         * @return {boolean} True if player matches all letters for the win.
@@ -80,27 +74,28 @@ const phraseList = [
   //IN PROGRESS!
 
 removeLife() {
-        //const key = document.getElementsByClassName("key");
-        const phraseLetters = document.getElementsByClassName("letter");
-        const tries = document.getElementsByClassName("tries");
+        const img = document.getElementsByTagName('img');
         
-        for(let i = 0; i < tries.length; i++){
-           
-    
-            if(!phraseLetters.textContent){
+        for(let i = 0; i < img.length; i++){
+
+            if( img[i].src = "images/liveHeart.png"){
                 
-                tries[i].firstChild.src = "images/lostHeart.png";
-                tries[i].firstChild.alt = "Lost Heart";
+                img[i].src = "images/lostHeart.png";
+                img[i].alt = "Lost Heart";
                 
-                this.missed +1;
+                this.missed += 1;
+
+                // X break; Would never check for gameOver()
                 
                 if(this.missed === 5){
-                    gameOver();
+                    this.gameOver(true);
                 }
+                
+                // X break; Doesn't run after first life removed.
             }
-
+                // X break; adds missed, but doesn't update second life.
+        } 
            
-        }
     }
 
 
@@ -113,22 +108,29 @@ gameOver(gameWon){
     const gameOverMSG = document.getElementById("game-over-message");
     
     if(this.missed === 5){
-        gameWon = true;
+            //Includes: Loss Message / overlay update + changes class from start to lose
         overlay.style.display = 'initial';
         overlay.classList.replace("start", "lose");
-        gameOverMSG.textContent = "GAME OVER: Better Luck Next Time!"
-        //Includes: Loss Message / overlay update + changes class from start to lose
-    } else if( this.checkForWin() ){
-            gameWon = true;
-            overlay.style.display = 'initial';
-            overlay.classList.replace("start", "win");
-            gameOverMSG.textContent = "WINNER!!!";
-            //Includes: Win Message / overlay update + changes class from start to win
-        } else {
-            gameWon = false;
-            //console.log("Keep Going");
+        gameOverMSG.textContent = "👾☠️ GAME OVER! 👾☠️"
+            return gameWon = false; 
+    } 
+    
+    if( this.checkForWin(true) ){
+            //Includes: Win Message / overlay update + changes class from start to win  
+        overlay.style.display = 'initial';
+        overlay.classList.replace("start", "win");
+        gameOverMSG.textContent = "⭐⭐⭐⭐⭐ WINNER!!! 🏆";
+            return gameWon = true; 
         }
 
-};
+}
+
+/**
+* Handles onscreen keyboard button clicks
+* @param (HTMLButtonElement) QWERTY Key element/button
+*/
+handleInteraction(button){
+    console.log(button);
+    };
 
 } //constructor closing bracket

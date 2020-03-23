@@ -42,6 +42,8 @@ document.getElementById("btn__reset").addEventListener("click", () => {
 * Event Listener for QWERTY button clicks
 * @param (HTMLButtonElement) button - The clicked button element
 */
+document.getElementsByClassName("key").addEventListener('click', () => {
 
-document.getElementsByClassName("key")
-    .addEventListener("click", handleInteraction(button), console.log(handleInteraction(button) ) );
+    handleInteraction()
+});
+
