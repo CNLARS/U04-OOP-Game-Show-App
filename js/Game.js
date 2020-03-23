@@ -71,38 +71,32 @@ const phraseList = [
 
 */
 
-  //IN PROGRESS!
-
 removeLife() {
         const img = document.getElementsByTagName('img');
         
         for(let i = 0; i < img.length; i++){
 
-            if( img[i].src = "images/liveHeart.png"){
+            if( (img.src = "images/liveHeart.png") === img[i].getAttribute("src") ){
                 
                 img[i].src = "images/lostHeart.png";
                 img[i].alt = "Lost Heart";
                 
-                this.missed += 1;
-
-                // X break; Would never check for gameOver()
+                this.missed += 1;  
                 
                 if(this.missed === 5){
                     this.gameOver(true);
                 }
-                
-                // X break; Doesn't run after first life removed.
-            }
-                // X break; adds missed, but doesn't update second life.
-        } 
-           
-    }
 
+                break; // Successfully breaks inside the if statement only when run, else the loop runs again.
+            }
+        }  
+    }
 
     /**
 * Displays game over message
 * @param {boolean} gameWon - Win or Lose = true or Lose = false
 */
+
 gameOver(gameWon){
     const overlay = document.getElementById("overlay");
     const gameOverMSG = document.getElementById("game-over-message");
@@ -111,11 +105,11 @@ gameOver(gameWon){
             //Includes: Loss Message / overlay update + changes class from start to lose
         overlay.style.display = 'initial';
         overlay.classList.replace("start", "lose");
-        gameOverMSG.textContent = "👾☠️ GAME OVER! 👾☠️"
+        gameOverMSG.textContent = "👾🔥☠️ GAME OVER! 👾🔥☠️"
             return gameWon = false; 
     } 
     
-    if( this.checkForWin(true) ){
+    if( this.checkForWin() ){
             //Includes: Win Message / overlay update + changes class from start to win  
         overlay.style.display = 'initial';
         overlay.classList.replace("start", "win");
@@ -125,6 +119,8 @@ gameOver(gameWon){
 
 }
 
+
+//IN PROGRESS!
 /**
 * Handles onscreen keyboard button clicks
 * @param (HTMLButtonElement) QWERTY Key element/button
