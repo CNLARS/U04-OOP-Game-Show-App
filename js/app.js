@@ -41,17 +41,15 @@ document.getElementById("btn__reset").addEventListener("click", () => {
 /**
 * Event Listener for QWERTY button clicks
 * @param (HTMLButtonElement) button - The clicked button element
+The forEach loops through each key to have an event listener, when clicked calls handleInteraction() on game object.
 */
 
-//IN PROGRESS! [Returns Undefined...google to figure out why]
-const key = document.getElementsByClassName("key");
+//IN PROGRESS!
+ let buttonKey = document.querySelectorAll("button.key");
+ 
+ buttonKey.forEach(key => key.addEventListener("click", (event) => game.handleInteraction() ));
+ 
 
-for(let i = 0; i < key.length; i ++){
 
-    key[i].addEventListener("click", () =>{
-        game.handleInteraction()
-    });
-
-}
 
 

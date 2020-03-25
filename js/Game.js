@@ -119,14 +119,16 @@ gameOver(gameWon){
 
 }
 
-
-//IN PROGRESS!
 /**
 * Handles onscreen keyboard button clicks
-* @param (HTMLButtonElement) QWERTY Key element/button
+* @param (HTMLButtonElement) event.target = QWERTY Key element/button
 */
+
 handleInteraction(button){
+    button = event.target;
     console.log(button);
     };
 
 } //constructor closing bracket
+
+//IN PROGRESS!
