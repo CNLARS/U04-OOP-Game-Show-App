@@ -126,7 +126,38 @@ gameOver(gameWon){
 
 handleInteraction(button){
     button = event.target;
-    console.log(button);
+    console.log(button); //Testing123
+
+//BRAINSTORM: What would be the if statement to run the conditionals?
+//NOTE: # is placeholder for future if conditional.
+
+//If the phrase does not include the guessed letter: disable, update class = "wrong", and removeLife();
+    if( # ){ //Fully functional [Tested with `button`]
+        button.disabled = true;
+        button.classList = "wrong";
+        this.removeLife();
+
+    } 
+ /*If the phrase includes the guessed letter: 
+ disable, update class = "chosen", showMatchedLetter(), checkForWin(), determine gameOver();
+ */
+
+    if( # ){
+        button.disabled = true; //functional [Tested with `button`]
+        button.classList = "chosen"; //functional [Tested with `button`]
+        
+        //Additional testing req.
+        this.showMatchedLetter();
+        this.checkForWin();
+        if(this.checkForWin() === true){
+            this.gameOver();
+        }
+    }
+
+
+
+
+
     };
 
 } //constructor closing bracket

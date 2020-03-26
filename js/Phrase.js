@@ -63,8 +63,3 @@
   }
 
 } // <= Phrase class bracket
-
-/* For Later:
-const qwertyButton = document.querySelectorAll('button.key');
-OR document.getElementsByClassName('key');
-*/
