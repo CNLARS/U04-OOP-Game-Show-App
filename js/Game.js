@@ -40,7 +40,7 @@ const phraseList = [
     startGame(){
         document.getElementById('overlay').style.display = 'none';
             this.activePhrase = this.getRandomPhrase();
-                this.activePhrase.addPhraseToDisplay();      
+                this.activePhrase.addPhraseToDisplay();     
     }
 
 
@@ -101,11 +101,14 @@ gameOver(gameWon){
     const overlay = document.getElementById("overlay");
     const gameOverMSG = document.getElementById("game-over-message");
     
+    
     if(this.missed === 5){
             //Includes: Loss Message / overlay update + changes class from start to lose
         overlay.style.display = 'initial';
         overlay.classList.replace("start", "lose");
-        gameOverMSG.textContent = "👾🔥☠️ GAME OVER! 👾🔥☠️"
+        gameOverMSG.textContent = "👾🔥☠️ GAME OVER! 👾🔥☠️";
+        // this.resetGame();
+        
             return gameWon = false; 
     } 
     
@@ -114,6 +117,8 @@ gameOver(gameWon){
         overlay.style.display = 'initial';
         overlay.classList.replace("start", "win");
         gameOverMSG.textContent = "⭐⭐⭐⭐⭐ WINNER!!! 🏆";
+        // this.resetGame();
+        
             return gameWon = true; 
         }
 
@@ -126,29 +131,28 @@ gameOver(gameWon){
 
 handleInteraction(button){
     button = event.target;
+    const guessedLetter = button.textContent;
     console.log(button); //Testing123
 
-//BRAINSTORM: What would be the if statement to run the conditionals?
-//NOTE: # is placeholder for future if conditional.
-
-//If the phrase does not include the guessed letter: disable, update class = "wrong", and removeLife();
-    if( # ){ //Fully functional [Tested with `button`]
+//If the phrase does not contain the guessed letter: disable, update class = "wrong", and removeLife();
+    if( !this.activePhrase.checkLetter(guessedLetter) ){
         button.disabled = true;
-        button.classList = "wrong";
+        button.className = "wrong";
         this.removeLife();
 
     } 
- /*If the phrase includes the guessed letter: 
- disable, update class = "chosen", showMatchedLetter(), checkForWin(), determine gameOver();
+
+ /*If the phrase contains the guessed letter: 
+ disable, update class = "chosen", showMatchedLetter(), checkForWin(), and determine gameOver();
  */
 
-    if( # ){
-        button.disabled = true; //functional [Tested with `button`]
-        button.classList = "chosen"; //functional [Tested with `button`]
-        
-        //Additional testing req.
-        this.showMatchedLetter();
+    if( this.activePhrase.checkLetter(guessedLetter) ){
+        button.disabled = true;
+        button.className = "chosen";
+       
+        this.activePhrase.showMatchedLetter(guessedLetter);
         this.checkForWin();
+
         if(this.checkForWin() === true){
             this.gameOver();
         }
@@ -160,6 +164,51 @@ handleInteraction(button){
 
     };
 
-} //constructor closing bracket
+/*  Reset the game after gameOver() 
+
+onclick "Start Game" button will...
+
+-Remove all `li` elements from the Phrase `ul` element.
+-Reset CSS class to default "key".
+-Disabled set to false.
+-Restore and display all `liveHeart.png` in the scoreboard.
+-`this.missed` set to 0.
+
+*/
+
+ //IN PROGRESS!
+resetGame(){
+
+    const recyclePhrase = document.querySelectorAll("li.letter");
+    const spaces = document.querySelectorAll("li.space");
+    const keyButtons = document.getElementsByTagName("button");
+    const img = document.getElementsByTagName('img');
+
+    //Does not fully remove all li elements from ul; why?
+    for(let i = 0; i < recyclePhrase.length; i++){
+        recyclePhrase[i].remove(i);
+        spaces[i].remove(i);
+    }
+
+    
+       //Updates keyButtons 
+        for(let i = 0; i < keyButtons.length; i++){
+
+            keyButtons[i].disabled = false;
+            keyButtons[i].className = "key";
+
+            }
+        //Restores Game "Lives"
+        for(let i = 0; i < img.length; i++){
+                img[i].src = "images/liveHeart.png";
+                img[i].alt = "Heart Icon";
+        }
+
+        this.missed = 0; //Resets to zero
+
+        //see eventListener on "btn__reset" for this.startGame();
+}
+
+} // <= constructor closing bracket
 
 //IN PROGRESS!

@@ -15,7 +15,7 @@
 
            const li = document.createElement('li');
            li.className = `hide letter ${this.phrase[i].toLowerCase()}`; //Advised to add `.toLowerCase()`
-           li.textContent = this.phrase[i];
+           li.textContent = this.phrase[i].toLowerCase();
            phraseUL.appendChild(li);
 
            if (li.textContent === ' ') {
@@ -63,3 +63,4 @@
   }
 
 } // <= Phrase class bracket
+

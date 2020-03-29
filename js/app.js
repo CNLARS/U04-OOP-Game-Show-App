@@ -34,7 +34,9 @@
 let game = '';
 document.getElementById("btn__reset").addEventListener("click", () => {
     game = new Game();
+    game.resetGame();
     game.startGame();
+    
 
 });
 
@@ -44,11 +46,11 @@ document.getElementById("btn__reset").addEventListener("click", () => {
 The forEach loops through each key to have an event listener, when clicked calls handleInteraction() on game object.
 */
 
-//IN PROGRESS!
  let buttonKey = document.querySelectorAll("button.key");
  
  buttonKey.forEach(key => key.addEventListener("click", (event) => game.handleInteraction() ));
- 
+
+
 
 
 
