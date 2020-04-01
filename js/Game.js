@@ -15,12 +15,12 @@
 
 const phraseList = [
 //Uplifting Phrases from the Anime Gurren Lagann; created by calling the Phrase class using `new Phrase()`
-    new Phrase("Do the Impossible"),
-    new Phrase("See the Invisible"),
-    new Phrase("Row Row"),
-    new Phrase("Fight the Power"),
-    new Phrase("Believe in the you who believes in yourself"),
-    new Phrase("Who the hell do you think I am")
+    new Phrase("do the impossible"),
+    new Phrase("see the invisible"),
+    new Phrase("row row"),
+    new Phrase("fight the power"),
+    new Phrase("believe in the you who believes in yourself"),
+    new Phrase("who the hell do you think I am")
     ];
 
     return phraseList;
@@ -74,12 +74,12 @@ const phraseList = [
 removeLife() {
         const img = document.getElementsByTagName('img');
         
-        for(let i = 0; i < img.length; i++){
+        //for(let i = 0; i < img.length; i++){
 
-            if( (img.src = "images/liveHeart.png") === img[i].getAttribute("src") ){
+            //if( (img.src = "images/liveHeart.png") === img[i].getAttribute("src") ){
                 
-                img[i].src = "images/lostHeart.png";
-                img[i].alt = "Lost Heart";
+                img[this.missed].src = "images/lostHeart.png";
+                img[this.missed].alt = "Lost Heart";
                 
                 this.missed += 1;  
                 
@@ -87,9 +87,10 @@ removeLife() {
                     this.gameOver(true);
                 }
 
-                break; // Successfully breaks inside the if statement only when run, else the loop runs again.
-            }
-        }  
+                //break; // Successfully breaks inside the if statement only when run, else the loop runs again.
+            //}
+        //}  
+//^ Refactor Remnants for future reference.
     }
 
     /**
@@ -140,13 +141,11 @@ handleInteraction(button){
         button.className = "wrong";
         this.removeLife();
 
-    } 
+    } else {
 
  /*If the phrase contains the guessed letter: 
  disable, update class = "chosen", showMatchedLetter(), checkForWin(), and determine gameOver();
- */
-
-    if( this.activePhrase.checkLetter(guessedLetter) ){
+ */ 
         button.disabled = true;
         button.className = "chosen";
        
@@ -157,10 +156,6 @@ handleInteraction(button){
             this.gameOver();
         }
     }
-
-
-
-
 
     };
 
@@ -176,19 +171,15 @@ onclick "Start Game" button will...
 
 */
 
- //IN PROGRESS!
-resetGame(){
 
-    const recyclePhrase = document.querySelectorAll("li.letter");
+resetGame(){
+    const ul = document.getElementById("phrase").firstElementChild;
     const spaces = document.querySelectorAll("li.space");
     const keyButtons = document.getElementsByTagName("button");
     const img = document.getElementsByTagName('img');
 
-    //Does not fully remove all li elements from ul; why?
-    for(let i = 0; i < recyclePhrase.length; i++){
-        recyclePhrase[i].remove(i);
-        spaces[i].remove(i);
-    }
+    //Removes li from ul [at the advice of @Emma W]
+    ul.innerHTML = "";
 
     
        //Updates keyButtons 
@@ -211,4 +202,4 @@ resetGame(){
 
 } // <= constructor closing bracket
 
-//IN PROGRESS!
+//Happy Coding!
