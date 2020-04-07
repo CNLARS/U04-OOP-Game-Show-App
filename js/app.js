@@ -48,10 +48,21 @@ The forEach loops through each key to have an event listener, when clicked calls
 
  let buttonKey = document.querySelectorAll("button.key");
  
- buttonKey.forEach(key => key.addEventListener("click", (event) => game.handleInteraction() ));
+ buttonKey.forEach(key => key.addEventListener("click", (event) => game.handleInteraction() )
+ 
+ );
 
 
+ //Dabbling with EE eventListener
+ window.addEventListener("keyup", (event) => {
+     for(i = 0; i < buttonKey.length; i ++){
 
+        if( event.key === buttonKey[i].textContent ){
+            console.log(event.key); //Testing123
+            //game.handleInteraction(event.key);
+        }
 
-
-
+     }
+   
+    
+  });
