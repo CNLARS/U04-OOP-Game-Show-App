@@ -54,12 +54,13 @@ The forEach loops through each key to have an event listener, when clicked calls
 
 
  //Dabbling with EE eventListener
- window.addEventListener("keyup", (event) => {
+ document.addEventListener("keyup", (event) => {
      for(i = 0; i < buttonKey.length; i ++){
 
         if( event.key === buttonKey[i].textContent ){
             console.log(event.key); //Testing123
-            //game.handleInteraction(event.key);
+            // X game.handleInteraction(buttonKey[i].textContent);
+            //game.handleInteraction(event.key); **Does not update QWERTY keys, class name updates body > keys and auto removesLife(). 
         }
 
      }

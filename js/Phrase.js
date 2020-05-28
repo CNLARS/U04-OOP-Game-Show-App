@@ -5,7 +5,7 @@
   class Phrase {
 
     constructor(phrase){
-        this.phrase = phrase;
+        this.phrase = phrase.toLowerCase();
       }
 
       addPhraseToDisplay(){
@@ -28,13 +28,13 @@
         When selected, check if the letter exists in phrase.
           Testing123: game.activePhrase.checkLetter('a')
         **/
-      checkLetter(letter) { 
-        
+      checkLetter(letter) {
+
         for (let i = 0; i < this.phrase.length; i++){
           if(this.phrase.includes(letter)){
             return true;
               //console.log(true);
-          } else { 
+          } else {
               return false;
               //console.log(false);
           }
@@ -51,7 +51,7 @@
         const phraseLetters = document.getElementsByClassName(letter);
 
         for(let i = 0; i < phraseLetters.length; i++){
-          
+
           if(letter === phraseLetters){
             phraseLetters[i].classList.remove("hide");
             //console.log("working");
@@ -63,4 +63,3 @@
   }
 
 } // <= Phrase class bracket
-

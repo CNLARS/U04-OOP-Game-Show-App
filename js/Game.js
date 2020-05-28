@@ -3,24 +3,24 @@
  * Game.js */
 
  class Game {
-    constructor(missed, phrases, activePhrase){ 
+    constructor(missed, phrases, activePhrase){
 
     this.missed = 0;
     this.phrases = this.createPhrases();
     this.activePhrase = null;
-    
+
      }
 //Method creates phrases for game use & returns an array of phrases as in game options.
      createPhrases(){
 
 const phraseList = [
 //Uplifting Phrases from the Anime Gurren Lagann; created by calling the Phrase class using `new Phrase()`
-    new Phrase("do the impossible"),
-    new Phrase("see the invisible"),
-    new Phrase("row row"),
-    new Phrase("fight the power"),
-    new Phrase("believe in the you who believes in yourself"),
-    new Phrase("who the hell do you think I am")
+    new Phrase("Do the impossible"),
+    new Phrase("See the invisible"),
+    new Phrase("Row Row"),
+    new Phrase("Fight the Power"),
+    new Phrase("Believe in the you who believes in yourself"),
+    new Phrase("Who the hell do you think I am")
     ];
 
     return phraseList;
@@ -40,7 +40,7 @@ const phraseList = [
     startGame(){
         document.getElementById('overlay').style.display = 'none';
             this.activePhrase = this.getRandomPhrase();
-                this.activePhrase.addPhraseToDisplay();     
+                this.activePhrase.addPhraseToDisplay();
     }
 
 
@@ -53,7 +53,7 @@ const phraseList = [
 
         const letterMatchSet = document.getElementsByClassName("show").length;
         const letterMatchPhrase = document.getElementsByClassName("letter").length;
-    
+
         if(letterMatchSet === letterMatchPhrase){
          return true;
         } else {
@@ -63,7 +63,7 @@ const phraseList = [
     }
 
     /**
-* Increases this.missed 
+* Increases this.missed
 * Decreases a life.
 * Checks: if lives > 0, else if 0 = game over.
 
@@ -73,23 +73,23 @@ const phraseList = [
 
 removeLife() {
         const img = document.getElementsByTagName('img');
-        
+
         //for(let i = 0; i < img.length; i++){
 
             //if( (img.src = "images/liveHeart.png") === img[i].getAttribute("src") ){
-                
+
                 img[this.missed].src = "images/lostHeart.png";
                 img[this.missed].alt = "Lost Heart";
-                
-                this.missed += 1;  
-                
+
+                this.missed += 1;
+
                 if(this.missed === 5){
                     this.gameOver(true);
                 }
 
                 //break; // Successfully breaks inside the if statement only when run, else the loop runs again.
             //}
-        //}  
+        //}
 //^ Refactor Remnants for future reference.
     }
 
@@ -101,26 +101,26 @@ removeLife() {
 gameOver(gameWon){
     const overlay = document.getElementById("overlay");
     const gameOverMSG = document.getElementById("game-over-message");
-    
-    
+
+
     if(this.missed === 5){
             //Includes: Loss Message / overlay update + changes class from start to lose
         overlay.style.display = 'initial';
         overlay.classList.replace("start", "lose");
         gameOverMSG.textContent = "👾🔥☠️ GAME OVER! 👾🔥☠️";
         // this.resetGame();
-        
-            return gameWon = false; 
-    } 
-    
+
+            return gameWon = false;
+    }
+
     if( this.checkForWin() ){
-            //Includes: Win Message / overlay update + changes class from start to win  
+            //Includes: Win Message / overlay update + changes class from start to win
         overlay.style.display = 'initial';
         overlay.classList.replace("start", "win");
         gameOverMSG.textContent = "⭐⭐⭐⭐⭐ WINNER!!! 🏆";
         // this.resetGame();
-        
-            return gameWon = true; 
+
+            return gameWon = true;
         }
 
 }
@@ -143,12 +143,12 @@ handleInteraction(button){
 
     } else {
 
- /*If the phrase contains the guessed letter: 
+ /*If the phrase contains the guessed letter:
  disable, update class = "chosen", showMatchedLetter(), checkForWin(), and determine gameOver();
- */ 
+ */
         button.disabled = true;
         button.className = "chosen";
-       
+
         this.activePhrase.showMatchedLetter(guessedLetter);
         this.checkForWin();
 
@@ -159,7 +159,7 @@ handleInteraction(button){
 
     };
 
-/*  Reset the game after gameOver() 
+/*  Reset the game after gameOver()
 
 onclick "Start Game" button will...
 
@@ -181,8 +181,8 @@ resetGame(){
     //Removes li from ul [at the advice of @Emma W]
     ul.innerHTML = "";
 
-    
-       //Updates keyButtons 
+
+       //Updates keyButtons
         for(let i = 0; i < keyButtons.length; i++){
 
             keyButtons[i].disabled = false;
